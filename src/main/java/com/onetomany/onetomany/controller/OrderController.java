@@ -1,6 +1,7 @@
 package com.onetomany.onetomany.controller;
 
 import com.onetomany.onetomany.entity.Customer;
+import com.onetomany.onetomany.entity.Product;
 import com.onetomany.onetomany.repository.CustomerRepository;
 import com.onetomany.onetomany.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,13 @@ public class OrderController {
         this.restTemplate = restTemplate;
     }
 
+    @GetMapping("/getProducts")
+    public ResponseEntity<List<Product>> getProducts(){
+
+        List<Product> products = productRepository.findAll();
+
+        return ResponseEntity.ok().body(products);
+    }
     @PostMapping("/placeOrder")
     public Customer placeOrder(@RequestBody Customer customer){
 
