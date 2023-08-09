@@ -35,6 +35,13 @@ public class OrderController {
 
         return ResponseEntity.ok().body(products);
     }
+    @GetMapping("/getCustomers")
+    public ResponseEntity<List<Customer>> getCustomers(){
+
+        List<Customer> customers = customerRepository.findAll();
+
+        return ResponseEntity.ok().body(customers);
+    }
     @PostMapping("/placeOrder")
     public Customer placeOrder(@RequestBody Customer customer){
 
